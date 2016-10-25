@@ -78,7 +78,7 @@ public abstract class Actor extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 	private UserAccount userAccount;
-	private Collection<Comment> comments;
+	
 
 
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
@@ -92,15 +92,6 @@ public abstract class Actor extends DomainEntity {
 		this.userAccount = userAccount;
 	}
 
-	@Valid
-	@NotNull
-	@OneToMany(mappedBy = "actor")
-	public Collection<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(Collection<Comment> comments) {
-		this.comments = comments;
-	}
+	
 
 }

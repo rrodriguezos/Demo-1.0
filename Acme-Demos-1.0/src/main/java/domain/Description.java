@@ -28,6 +28,9 @@ public class Description extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 
 	private String text;
+	
+	
+	
 	private ISOCode isoCode;
 
 	@NotBlank
@@ -41,16 +44,18 @@ public class Description extends DomainEntity {
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	public ISOCode getISOCode() {
+	public ISOCode getIsoCode() {
 		return isoCode;
 	}
 
-	public void setISOCode(ISOCode isoCode) {
+	public void setIsoCode(ISOCode isoCode) {
 		this.isoCode = isoCode;
 	}
 
 	// Relationships ----------------------------------------------------------
 	private Demo demo;
+
+	
 
 	@NotNull
 	@Valid
