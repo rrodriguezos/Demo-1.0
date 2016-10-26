@@ -23,7 +23,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount2" class="security.UserAccount">
 		<property name="username" value="developer1" />
 		<property name="password" value="e857f9b3fa03593ff7787a6ba9ecd5c1" />
@@ -35,7 +35,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount3" class="security.UserAccount">
 		<property name="username" value="developer2" />
 		<property name="password" value="19edea09031e5ea3c360597a5f9430b4" />
@@ -47,7 +47,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount4" class="security.UserAccount">
 		<property name="username" value="developer3" />
 		<property name="password" value="24ec8cfaaf0ad6e5fdb9cf76dd6f7890" />
@@ -60,25 +60,25 @@
 		</property>
 	</bean>
 	<!-- Administrators -->
-	
+
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="userAccount" ref="userAccount1" />
 		<property name="name" value="Paco" />
 		<property name="surname" value="Fdez" />
 		<property name="emailAddress" value="paco@gmail.com" />
 		<property name="phone" value="654321987" />
-		
+
 	</bean>
-	
+
 	<!-- Developers -->
-	
+
 	<bean id="developer1" class="domain.Developer">
 		<property name="userAccount" ref="userAccount2" />
 		<property name="name" value="Mark" />
 		<property name="surname" value="Tomson" />
 		<property name="emailAddress" value="mtomson@acmedemos.com" />
 		<property name="phone" value="954874563" />
-		
+
 		<property name="demos">
 			<list>
 				<ref bean="demo1" />
@@ -87,14 +87,14 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="developer2" class="domain.Developer">
 		<property name="userAccount" ref="userAccount3" />
 		<property name="name" value="Patty" />
 		<property name="surname" value="Bouvier" />
 		<property name="emailAddress" value="pbouvs@acmedemos.com" />
 		<property name="phone" value="958746521" />
-		
+
 		<property name="demos">
 			<list>
 				<ref bean="demo4" />
@@ -103,14 +103,14 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="developer3" class="domain.Developer">
 		<property name="userAccount" ref="userAccount4" />
 		<property name="name" value="Henry" />
 		<property name="surname" value="Scott" />
 		<property name="emailAddress" value="hscott@acmedemos.com" />
 		<property name="phone" value="987412569" />
-		
+
 		<property name="demos">
 			<list>
 				<ref bean="demo7" />
@@ -119,7 +119,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Demos -->
 	<bean id="demo1" class="domain.Demo">
 		<property name="title" value="Acme-Music" />
@@ -136,15 +136,20 @@
 				<ref bean="comment10" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description1" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo2" class="domain.Demo">
 		<property name="title" value="Acme-Canyoning " />
 		<property name="momentReleased" value="01/10/2016 00:00" />
 		<property name="developer" ref="developer1" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -153,15 +158,20 @@
 				<ref bean="comment12" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description2" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo3" class="domain.Demo">
 		<property name="title" value="Acme-Canyoning 2.0 " />
 		<property name="momentReleased" value="11/11/2016 16:43" />
 		<property name="developer" ref="developer1" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -170,8 +180,14 @@
 				<ref bean="comment11" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description3" />
+				<ref bean="description10" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo4" class="domain.Demo">
 		<property name="title" value="Acme-BabySitter " />
 		<property name="momentReleased" value="10/10/2016 15:57" />
@@ -186,15 +202,21 @@
 				<ref bean="comment4" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description4" />
+				<ref bean="description11" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo5" class="domain.Demo">
 		<property name="title" value="Novsoft Browser Torrent Plugin" />
 		<property name="momentReleased" value="04/07/2013 21:03" />
 		<property name="developer" ref="developer2" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -202,15 +224,20 @@
 				<ref bean="comment5" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description5" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo6" class="domain.Demo">
 		<property name="title" value="Adblock From Facebook" />
 		<property name="momentReleased" value="01/08/2015 20:37" />
 		<property name="developer" ref="developer2" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -218,15 +245,21 @@
 				<ref bean="comment6" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+				<ref bean="description12" />
+				<ref bean="description6" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo7" class="domain.Demo">
 		<property name="title" value="Farcraw 3.1.4 " />
 		<property name="momentReleased" value="10/08/2011 15:57" />
 		<property name="developer" ref="developer3" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -234,15 +267,21 @@
 				<ref bean="comment7" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+			<ref bean="description7" />
+			<ref bean="description13" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo8" class="domain.Demo">
 		<property name="title" value="Sample Java Demo" />
 		<property name="momentReleased" value="04/08/2010 14:01" />
 		<property name="developer" ref="developer3" />
 		<property name="resources">
 			<list>
-				
+
 			</list>
 		</property>
 		<property name="comments">
@@ -250,8 +289,13 @@
 				<ref bean="comment8" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+			<ref bean="description8" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="demo9" class="domain.Demo">
 		<property name="title" value="Bubble Puzzle Game for Linux" />
 		<property name="momentReleased" value="04/07/2010 20:39" />
@@ -266,30 +310,35 @@
 				<ref bean="comment9" />
 			</list>
 		</property>
+		<property name="descriptions">
+			<list>
+			<ref bean="description9" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<!-- Resources -->
 	<bean id="resource1" class="domain.Resource">
 		<property name="title" value="UML Model" />
 		<property name="link" value="http://www.acme-demos.com/rfege" />
 		<property name="demo" ref="demo1" />
 	</bean>
-	
+
 	<bean id="resource2" class="domain.Resource">
 		<property name="title" value="User Guide (PDF)" />
 		<property name="link" value="http://www.acme-demos.com/rwdewf4" />
 		<property name="demo" ref="demo4" />
 	</bean>
-	
+
 	<bean id="resource3" class="domain.Resource">
 		<property name="title" value="Installation Guide (PDF)" />
 		<property name="link" value="http://www.acme-demos.com/efrrg4" />
 		<property name="demo" ref="demo9" />
 	</bean>
-	
+
 	<!-- Comments -->
 
- 	<bean id="comment1" class="domain.Comment">
+	<bean id="comment1" class="domain.Comment">
 		<property name="author" value="Anonymous" />
 		<property name="demo" ref="demo1" />
 		<property name="text" value="Texto 1" />
@@ -352,9 +401,9 @@
 		<property name="moment" value="04/07/2015" />
 		<property name="stars" value="2" />
 	</bean>
-	
-	
-	
+
+
+
 	<bean id="comment9" class="domain.Comment">
 		<property name="author" value="Anonymous" />
 		<property name="demo" ref="demo9" />
@@ -385,28 +434,88 @@
 		<property name="text" value="Texto 12" />
 		<property name="moment" value="05/10/2015" />
 		<property name="stars" value="3" />
-	</bean> 
-	
+	</bean>
+
 	<!-- DEscriptions -->
 
- 	<bean id="description1" class="domain.Description">
+	<bean id="description1" class="domain.Description">
 		<property name="text" value="Text1" />
-		<property name="isoCode" value="ENG" />	 
-		<property name="demo" ref="demo5" />
+		<property name="isoCode" value="ENG" />
+		<property name="demo" ref="demo1" />
 	</bean>
-	
+
 	<bean id="description2" class="domain.Description">
 		<property name="text" value="Texto2" />
-		<property name="isoCode" value="SPA" />	 
-		<property name="demo" ref="demo7" />
+		<property name="isoCode" value="SPA" />
+		<property name="demo" ref="demo2" />
 	</bean>
-	
+
+	<bean id="description10" class="domain.Description">
+		<property name="text" value="Texto2" />
+		<property name="isoCode" value="SPA" />
+		<property name="demo" ref="demo3" />
+	</bean>
+
 	<bean id="description3" class="domain.Description">
 		<property name="text" value="il testo 3" />
-		<property name="isoCode" value="ITA" />	 
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo3" />
+	</bean>
+
+	<bean id="description4" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo4" />
+	</bean>
+
+	<bean id="description5" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo5" />
+	</bean>
+
+	<bean id="description6" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo6" />
+	</bean>
+
+	<bean id="description7" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo7" />
+	</bean>
+
+	<bean id="description8" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
+		<property name="demo" ref="demo8" />
+	</bean>
+
+	<bean id="description9" class="domain.Description">
+		<property name="text" value="il testo 3" />
+		<property name="isoCode" value="ITA" />
 		<property name="demo" ref="demo9" />
 	</bean>
-	
-	
-	
+
+	<bean id="description11" class="domain.Description">
+		<property name="text" value="O texto aqui" />
+		<property name="isoCode" value="POR" />
+		<property name="demo" ref="demo4" />
+	</bean>
+
+	<bean id="description12" class="domain.Description">
+		<property name="text" value="Текст здесь" />
+		<property name="isoCode" value="RUS" />
+		<property name="demo" ref="demo6" />
+	</bean>
+
+	<bean id="description13" class="domain.Description">
+		<property name="text" value="Le texte ici" />
+		<property name="isoCode" value="FRE" />
+		<property name="demo" ref="demo6" />
+	</bean>
+
+
+
 </beans>

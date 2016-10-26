@@ -61,6 +61,7 @@ public class Demo extends DomainEntity {
 	private Developer developer;
 	private Collection<Resource> resource;
 	private Collection<Comment> comments;
+	private Collection<Description> descriptions;
 
 	@Valid
 	@NotNull
@@ -93,6 +94,16 @@ public class Demo extends DomainEntity {
 
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@Valid
+	@OneToMany(mappedBy = "demo")
+	public Collection<Description> getDescriptions() {
+		return descriptions;
+	}
+
+	public void setDescriptions(Collection<Description> descriptions) {
+		this.descriptions = descriptions;
 	}
 
 }

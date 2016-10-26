@@ -28,9 +28,7 @@ public class Description extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 
 	private String text;
-	
-	
-	
+
 	private ISOCode isoCode;
 
 	@NotBlank
@@ -55,8 +53,6 @@ public class Description extends DomainEntity {
 	// Relationships ----------------------------------------------------------
 	private Demo demo;
 
-	
-
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
@@ -67,5 +63,4 @@ public class Description extends DomainEntity {
 	public void setDemo(Demo demo) {
 		this.demo = demo;
 	}
-
 }
