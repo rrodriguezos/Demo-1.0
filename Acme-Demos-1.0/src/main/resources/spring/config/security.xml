@@ -58,7 +58,7 @@
 		
 		<security:intercept-url pattern="/resource/developer/**" access="hasRole('DEVELOPER')" />
   		
-  		
+  		<security:intercept-url pattern="/developer/register.do" access="isAnonymous()" /> 
   		
 		
 		<security:intercept-url pattern="/dashboard/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
