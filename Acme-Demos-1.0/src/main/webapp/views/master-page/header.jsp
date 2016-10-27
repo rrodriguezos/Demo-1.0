@@ -57,9 +57,9 @@
 
 					<security:authorize access="hasRole('DEVELOPER')">
 						<li><a href="demo/developer/mylist.do"><spring:message
-									code="master.page.user.demos" /></a></li>
+									code="master.page.developer.mydemos" /></a></li>
 						<li><a href="demo/developer/create.do"><spring:message
-									code="master.page.user.createDemo" /></a></li>
+									code="master.page.developer.createDemo" /></a></li>
 					</security:authorize>
 
 

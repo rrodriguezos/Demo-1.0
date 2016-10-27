@@ -11,7 +11,7 @@ import domain.Demo;
 @Repository
 public interface DemoRepository extends JpaRepository<Demo, Integer> {
 
-	@Query("select d from Developer d where d.developer.id = ?1")
+	@Query("select d from Demo d where d.developer.id = ?1")
 	Collection<Demo> findDemosByDeveloper(int developerId);
 
 	

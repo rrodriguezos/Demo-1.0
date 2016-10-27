@@ -28,33 +28,64 @@ public class ResourceService {
 		super();
 	}
 
-	// Simple CRUD methods--------------------
+	//Simple CRUD methods--------------------
 
-	public Collection<Resource> findAll() {
-		Collection<Resource> result;
+		public Resource create(){
+			Resource result;	
 
-		result = resourceRepository.findAll();
+			result = new Resource();			
 
-		return result;
-	}
+			return result;
+		}
 
-	public Resource findOne(int dailyPlanId) {
-		Resource result;
+		public Collection<Resource> findAll(){
+			Collection<Resource> result;
 
-		result = resourceRepository.findOne(dailyPlanId);
+			result = resourceRepository.findAll();
 
-		return result;
-	}
+			return result;
+		}
 
-	// Other Methods--------------------
+		public Resource findOne(int resourceId){
+			Resource result;
 
-	private void checkPrincipal(Developer u) {
-		Developer developer;
+			result = resourceRepository.findOne(resourceId);
 
-		developer = developerService.findByPrincipal();
-		Assert.isTrue(developer != null);
+			return result;
+		}
 
-		Assert.isTrue(developer.equals(u));
-	}
+		public void save(Resource resource){
+			Assert.notNull(resource);
+			checkPrincipal(resource.getDemo().getDeveloper());
+			
+			resourceRepository.saveAndFlush(resource);
+		}
+
+		public void delete(Resource resource){
+			checkPrincipal(resource.getDemo().getDeveloper());
+			
+			
+			resourceRepository.delete(resource);
+		}
+
+
+		//Other Methods--------------------
+		
+		private void checkPrincipal(Developer d){
+			Developer developer;
+		
+			developer = developerService.findByPrincipal();
+			Assert.isTrue(developer != null);
+			
+			Assert.isTrue(developer.equals(d));
+		}
+		
+		public Collection<Resource> resourcesByDemo(int tripId){
+			Collection<Resource> result;
+			
+			result = resourceRepository.resourcesByDemo(tripId);
+			return result;
+		}
+		
 
 }
