@@ -45,10 +45,18 @@
 	
 		<security:intercept-url pattern="/search/buscar.do" access="permitAll" />
 		<security:intercept-url pattern="/search/buscando.do" access="permitAll" />
+		<security:intercept-url pattern="/demo/list.do" access="permitAll" />
+		<security:intercept-url pattern="/demo/display.do" access="permitAll" />
+		<security:intercept-url pattern="/description/display.do" access="permitAll" />
+		<security:intercept-url pattern="/resource/display.do" access="permitAll" />
 	
   		<security:intercept-url pattern="/demo/developer/mylist.do" access="hasRole('DEVELOPER')" /> 
 		<security:intercept-url pattern="/demo/developer/edit.do" access="hasRole('DEVELOPER')" />
 		<security:intercept-url pattern="/demo/developer/create.do" access="hasRole('DEVELOPER')" />
+				<security:intercept-url pattern="/demo/developer/**" access="hasRole('DEVELOPER')" />
+		<security:intercept-url pattern="/description/developer/display.do" access="hasRole('DEVELOPER')" />
+		
+		<security:intercept-url pattern="/resource/developer/**" access="hasRole('DEVELOPER')" />
   		
   		
   		

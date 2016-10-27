@@ -78,7 +78,7 @@ public class DescriptionService {
 		Assert.isTrue(developer.equals(u));
 	}
 
-	public Collection<Description> descriptionsByTrip(int tripId) {
+	public Collection<Description> findDescriptionsByDemoId(int tripId) {
 		Collection<Description> result;
 
 		result = descriptionRepository.descriptionsByDemo(tripId);

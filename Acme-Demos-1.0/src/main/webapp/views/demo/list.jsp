@@ -21,9 +21,10 @@
 	
 	<spring:message code="demo.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" />>
-		
+	
 	<spring:message code="demo.momentReleased" var="momentReleasedHeader" />
-	<display:column property="momentReleased" title="${momentReleasedHeader}" />
+	<display:column property="momentReleased" title="${momentReleasedHeader}"
+		format="{0,date,dd/MM/yyyy HH:mm}" sortable="true" />
 	
 	<spring:message code="demo.display" var="display" />
 	<display:column title="${display}">

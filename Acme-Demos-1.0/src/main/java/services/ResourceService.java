@@ -80,10 +80,10 @@ public class ResourceService {
 			Assert.isTrue(developer.equals(d));
 		}
 		
-		public Collection<Resource> resourcesByDemo(int tripId){
+		public Collection<Resource> findResourcesByDemoId(int demoId){
 			Collection<Resource> result;
 			
-			result = resourceRepository.resourcesByDemo(tripId);
+			result = resourceRepository.resourcesByDemo(demoId);
 			return result;
 		}
 		

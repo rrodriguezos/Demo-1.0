@@ -28,7 +28,7 @@
 	<spring:message code="description.text" var="textHeader" />
 	<display:column property="text" title="${textHeader}" />
 
-	<spring:message code="isoCode.description" var="isoCodeHeader" />
+	<spring:message code="description.isoCode" var="isoCodeHeader" />
 	<display:column property="isoCode" title="${isoCodeHeader}" />
 	
 	

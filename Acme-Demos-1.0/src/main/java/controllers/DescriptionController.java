@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.DemoService;
+import services.DescriptionService;
 import services.DeveloperService;
-import services.ResourceService;
 import domain.Demo;
+import domain.Description;
 import domain.Developer;
-import domain.Resource;
 
 @Controller
-@RequestMapping("/resource")
-public class ResourceController extends AbstractController {
+@RequestMapping("/description")
+public class DescriptionController extends AbstractController {
 
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private ResourceService resourceService;
+	private DescriptionService descriptionService;
 	@Autowired
 	private DemoService demoService;
 	@Autowired
 	private DeveloperService developerService;
 
 	// Constructors -----------------------------------------------------------
-	public ResourceController() {
+	public DescriptionController() {
 		super();
 	}
 
@@ -39,13 +39,13 @@ public class ResourceController extends AbstractController {
 	public ModelAndView list(@RequestParam int demoId) {
 
 		ModelAndView result;
-		Collection<Resource> resources;
+		Collection<Description> descriptions;
 		Demo demo;
 		Developer developer;
 		Boolean mydemo;
-		resources = resourceService.findResourcesByDemoId(demoId);
-		result = new ModelAndView("resource/list");
-		result.addObject("resources", resources);
+		descriptions = descriptionService.findDescriptionsByDemoId(demoId);
+		result = new ModelAndView("description/list");
+		result.addObject("descriptions", descriptions);
 		result.addObject("demoId", demoId);
 		mydemo = false;
 		try {
@@ -58,19 +58,20 @@ public class ResourceController extends AbstractController {
 
 		}
 		result.addObject("mydemo", mydemo);
+
 		return result;
 	}
 
 	// Display --------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(int resourceId) {
+	public ModelAndView display(int descriptionId) {
 		ModelAndView result;
-		Resource resource;
+		Description description;
 
-		resource = resourceService.findOne(resourceId);
+		description = descriptionService.findOne(descriptionId);
 
-		result = new ModelAndView("resource/display");
-		result.addObject("resource", resource);
+		result = new ModelAndView("description/display");
+		result.addObject("description", description);
 
 		return result;
 	}
