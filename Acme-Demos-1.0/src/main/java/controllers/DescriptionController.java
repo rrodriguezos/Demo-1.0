@@ -67,11 +67,36 @@ public class DescriptionController extends AbstractController {
 	public ModelAndView display(int descriptionId) {
 		ModelAndView result;
 		Description description;
+		Demo demo;
+		Boolean mydemo;
+		Boolean logeado;
+		Developer developer;
+		logeado = false;
+		
+		
+		description = descriptionService.findOne(descriptionId);
+		demo = demoService.findOne(description.getDemo().getId());
+		mydemo = false;
+		
+		try {
+			developer = developerService.findByPrincipal();
+			if (developer != null) {
+				logeado = true;
+			}
+			if (developer.equals(demo.getDeveloper())) {
+				mydemo = true;
+			}
+		} catch (Throwable oops) {
+			mydemo = false;
+			logeado = false;
+		}
 
 		description = descriptionService.findOne(descriptionId);
 
 		result = new ModelAndView("description/display");
 		result.addObject("description", description);
+		result.addObject("mydemo", mydemo);
+		result.addObject("logeado", logeado);
 
 		return result;
 	}

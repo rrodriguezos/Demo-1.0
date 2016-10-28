@@ -76,7 +76,7 @@ public class Demo extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "demo")
+	@OneToMany(cascade={CascadeType.REMOVE,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},mappedBy="demo")
 	public Collection<Resource> getResources() {
 		return resource;
 	}
@@ -87,7 +87,7 @@ public class Demo extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "demo")
+	@OneToMany(cascade={CascadeType.REMOVE,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},mappedBy="demo")
 	public Collection<Comment> getComments() {
 		return comments;
 	}
@@ -97,7 +97,7 @@ public class Demo extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany(mappedBy = "demo")
+	@OneToMany(cascade={CascadeType.REMOVE,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},mappedBy="demo")
 	public Collection<Description> getDescriptions() {
 		return descriptions;
 	}

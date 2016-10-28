@@ -74,11 +74,17 @@
 	</tr>
 	<br>
 
+		<jstl:if test="${description.id == 0}">
+			<input type="submit" name="save"
+				value="<spring:message code="description.save" />" />
+				<acme:cancel url="demo/developer/mylist.do" code="description.cancel" />
+		</jstl:if>
+		<jstl:if test="${description.id != 0}">
+			<input type="submit" name="save"
+				value="<spring:message code="description.save" />"/>
+				<acme:cancel url="demo/developer/mylist.do" code="description.cancel" />
+		</jstl:if>
 
-
-		<input type="submit" name="save"
-			value="<spring:message code="description.save" />" />
-		<acme:cancel url="demo/developer/mylist.do" code="description.cancel" />
 
 	</form:form>
 

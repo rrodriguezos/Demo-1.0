@@ -22,6 +22,18 @@
 
 <acme:jstlOut code="description.text" value="${description.text }" />
 <acme:jstlOut code="description.isoCode" value="${description.isoCode }" />
+<br>
+<security:authorize access="hasRole('DEVELOPER')">
+	<jstl:if test="${logeado == true}">
+		<jstl:if test="${mydemo == true}">
+
+			<input type="button"
+				value="<spring:message code="description.edit" />"
+				onclick="javascript: window.location.assign('description/developer/edit.do?descriptionId=${description.id}')" />
+
+		</jstl:if>
+	</jstl:if>
+</security:authorize>
 
 
 

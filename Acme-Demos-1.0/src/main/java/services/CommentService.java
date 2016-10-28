@@ -11,7 +11,7 @@ import repositories.CommentRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Comment;
-import domain.Resource;
+import domain.Demo;
 
 @Transactional
 @Service
@@ -70,12 +70,35 @@ public class CommentService {
 		Assert.isTrue(actor.getUserAccount().getAuthorities()
 				.contains(authority));
 	}
-	
-	
-	public Collection<Comment> findCommentsByDemoId(int demoId){
+
+	public Collection<Comment> findCommentsByDemoId(int demoId) {
 		Collection<Comment> result;
-		
+
 		result = commentRepository.findCommentsByDemoId(demoId);
+		return result;
+	}
+
+	public Double averageCommentsPerDemo() {
+		Double result;
+
+		result = commentRepository.averageCommentsPerDemo();
+
+		return result;
+	}
+
+	public Double averageStarsPerDemo() {
+		Double result;
+
+		result = commentRepository.averageStarsPerDemo();
+
+		return result;
+	}
+
+	public Collection<Demo> demoSortedAverageNumberStars() {
+		Collection<Demo> result;
+
+		result = commentRepository.demoSortedAverageNumberStars();
+
 		return result;
 	}
 }

@@ -74,8 +74,6 @@ public class DemoService {
 	public void delete(Demo demo) {
 		Assert.notNull(demo);
 		checkPrincipal(demo.getDeveloper());
-
-		demo.getComments().clear();
 		demoRepository.delete(demo);
 	}
 
@@ -125,19 +123,18 @@ public class DemoService {
 
 		return result;
 	}
-	
-	//Dashboard Developer
+
+	// Dashboard Developer
 	public Double averageNumberOfCommentsByDemo() {
 		return demoRepository.averageNumberOfCommentsByDemo();
 	}
-	
-//	public Double averageNumberOfStarsByDemo() {
-//		return demoRepository.averageNumberOfStarsByDemo();
-//	}
-	
-//	public Collection<Demo> demosSortedByStars() {
-//	return demoRepository.demosSortedByStars();
-//}
-	
+
+	// public Double averageNumberOfStarsByDemo() {
+	// return demoRepository.averageNumberOfStarsByDemo();
+	// }
+
+	// public Collection<Demo> demosSortedByStars() {
+	// return demoRepository.demosSortedByStars();
+	// }
 
 }

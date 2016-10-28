@@ -66,11 +66,33 @@ public class ResourceController extends AbstractController {
 	public ModelAndView display(int resourceId) {
 		ModelAndView result;
 		Resource resource;
+		Demo demo;
+		Boolean mydemo;
+		Boolean logeado;
+		Developer developer;
+		logeado = false;
 
 		resource = resourceService.findOne(resourceId);
+		demo = demoService.findOne(resource.getDemo().getId());
+		mydemo = false;
+
+		try {
+			developer = developerService.findByPrincipal();
+			if (developer != null) {
+				logeado = true;
+			}
+			if (developer.equals(demo.getDeveloper())) {
+				mydemo = true;
+			}
+		} catch (Throwable oops) {
+			mydemo = false;
+			logeado = false;
+		}
 
 		result = new ModelAndView("resource/display");
 		result.addObject("resource", resource);
+		result.addObject("mydemo", mydemo);
+		result.addObject("logeado", logeado);
 
 		return result;
 	}

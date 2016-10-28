@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import services.DescriptionService;
 import services.DemoService;
-
+import services.DescriptionService;
 import controllers.AbstractController;
-import domain.Description;
 import domain.Demo;
+import domain.Description;
 
 @Controller
 @RequestMapping("/description/developer")
@@ -80,14 +79,51 @@ public class DescriptionDeveloperController extends AbstractController {
 		return result;
 	}
 
+	// Edit -----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editSave(@RequestParam int descriptionId) {
+		ModelAndView result;
+		Description description;
+		description = descriptionService.findOne(descriptionId);
+
+		result = createEditModelAndView(description);
+		result.addObject("description", description);
+		return result;
+	}
+
+	// Save --------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveEdit")
+	public ModelAndView saveEdit(@Valid Description description,
+			BindingResult binding, RedirectAttributes redir) {
+		ModelAndView result;
+
+		if (binding.hasErrors()) {
+			result = createEditModelAndView(description);
+
+		} else {
+			try {
+				descriptionService.save(description);
+				result = new ModelAndView("redirect:/demo/developer/mylist.do");
+				result.addObject("requestUri", "/demo/developer/mylist.do");
+				redir.addFlashAttribute("message", "description.commit.ok");
+
+			} catch (Throwable oops) {
+				result = createEditModelAndView(description,
+						"description.commit.error");
+			}
+		}
+
+		return result;
+	}
+
 	// Delete-----------------------------------------------------------------------
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView save(@RequestParam int descriptionId) {
 		ModelAndView result;
 
-		Description description = descriptionService.findOne(descriptionId);
+		Description desccription = descriptionService.findOne(descriptionId);
 
-		descriptionService.delete(description);
+		descriptionService.delete(desccription);
 
 		result = new ModelAndView("redirect:/demo/developer/mylist.do");
 		result.addObject("requestUri", "/demo/developer/mylist.do");

@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import services.ResourceService;
 import services.DemoService;
-
+import services.ResourceService;
 import controllers.AbstractController;
-import domain.Resource;
 import domain.Demo;
+import domain.Resource;
 
 @Controller
 @RequestMapping("/resource/developer")
@@ -72,6 +71,43 @@ public class ResourceDeveloperController extends AbstractController {
 				result = createEditModelAndView(resource);
 
 				result.addObject("message", "resource.commit.error");
+			}
+		}
+
+		return result;
+	}
+
+	// Edit -----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editSave(@RequestParam int resourceId) {
+		ModelAndView result;
+		Resource resource;
+		resource = resourceService.findOne(resourceId);
+
+		result = createEditModelAndView(resource);
+		result.addObject("resource", resource);
+		return result;
+	}
+
+	// Save --------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "saveEdit")
+	public ModelAndView saveEdit(@Valid Resource resource,
+			BindingResult binding, RedirectAttributes redir) {
+		ModelAndView result;
+
+		if (binding.hasErrors()) {
+			result = createEditModelAndView(resource);
+
+		} else {
+			try {
+				resourceService.save(resource);
+				result = new ModelAndView("redirect:/demo/developer/mylist.do");
+				result.addObject("requestUri", "/demo/developer/mylist.do");
+				redir.addFlashAttribute("message", "description.commit.ok");
+
+			} catch (Throwable oops) {
+				result = createEditModelAndView(resource,
+						"resource.commit.error");
 			}
 		}
 

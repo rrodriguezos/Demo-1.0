@@ -60,6 +60,8 @@
 									code="master.page.developer.mydemos" /></a></li>
 						<li><a href="demo/developer/create.do"><spring:message
 									code="master.page.developer.createDemo" /></a></li>
+									<li><a href="dashboard/developer/list.do"><spring:message
+									code="master.page.developer.dashboard" /></a></li>
 					</security:authorize>
 
 

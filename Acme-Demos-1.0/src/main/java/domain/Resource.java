@@ -12,11 +12,11 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes = { @Index(columnList = "title"),
-		@Index(columnList = "link") })
+@Table(indexes = { @Index(columnList = "title"), @Index(columnList = "link") })
 public class Resource extends DomainEntity {
 
 	// Constructor ----------------------------------------------
@@ -40,6 +40,7 @@ public class Resource extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@URL
 	public String getLink() {
 		return link;
 	}
