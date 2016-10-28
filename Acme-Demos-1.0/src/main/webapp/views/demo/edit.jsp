@@ -32,15 +32,24 @@
 
 		<acme:textbox code="demo.title" path="title" />
 
-		<acme:date code="demo.momentReleased" path="momentReleased" readonly="false" />
+		<acme:date code="demo.momentReleased" path="momentReleased"
+			readonly="false" />
 
-		
+
+		<jstl:if test="${demo.id == 0}">
+			<input type="submit" name="save"
+				value="<spring:message code="demo.save" />" />
+		</jstl:if>
+
 		<jstl:if test="${demo.id != 0}">
 			<input type="submit" name="save"
-			value="<spring:message code="demo.save" />" onclick="return confirm('<spring:message code="demo.confirm.delete.descriptions" />')" />
-			<input type="submit" name="delete" value="<spring:message code="demo.delete"/>" onclick="return confirm('<spring:message code="demo.confirm.delete" />')"/>
+				value="<spring:message code="demo.save" />"
+				onclick="return confirm('<spring:message code="demo.confirm.delete.descriptions" />')" />
+			<input type="submit" name="delete"
+				value="<spring:message code="demo.delete"/>"
+				onclick="return confirm('<spring:message code="demo.confirm.delete" />')" />
 		</jstl:if>
-		
+
 		<acme:cancel url="demo/developer/mylist.do" code="demo.cancel" />
 
 	</form:form>

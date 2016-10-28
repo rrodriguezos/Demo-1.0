@@ -133,7 +133,7 @@ public class DeveloperDemoController extends AbstractController {
 
 		result = new ModelAndView("demo/developer/edit");
 		result.addObject("demo", demo);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

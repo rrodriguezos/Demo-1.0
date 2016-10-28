@@ -47,7 +47,7 @@ public class DeveloperController extends AbstractController {
 	}
 	
 	
-	//Register
+	//Register-----------------------------------------------------------------
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public ModelAndView create(){
 		DeveloperRegisterForm df = new DeveloperRegisterForm();
@@ -93,7 +93,7 @@ public class DeveloperController extends AbstractController {
 		
 		ModelAndView res = new ModelAndView("developer/register");
 		res.addObject("developerForm", df);
-		res.addObject("message2", message);
+		res.addObject("message", message);
 		res.addObject("requestUri","developer/register.do");
 		return res;
 	}

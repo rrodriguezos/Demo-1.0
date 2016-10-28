@@ -68,12 +68,12 @@ public class DescriptionDeveloperController extends AbstractController {
 				result = new ModelAndView(
 						"redirect:/description/list.do?demoId="
 								+ description.getDemo().getId());
-				redir.addFlashAttribute("message2", "description.commit.ok");
+				redir.addFlashAttribute("message", "description.commit.ok");
 
 			} catch (Throwable oops) {
 				result = createEditModelAndView(description);
 
-				result.addObject("message2", "description.commit.error");
+				result.addObject("message", "description.commit.error");
 			}
 		}
 
@@ -112,7 +112,7 @@ public class DescriptionDeveloperController extends AbstractController {
 		result = new ModelAndView("description/create");
 
 		result.addObject("description", description);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

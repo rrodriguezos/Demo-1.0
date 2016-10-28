@@ -66,12 +66,12 @@ public class ResourceDeveloperController extends AbstractController {
 				resourceService.save(resource);
 				result = new ModelAndView("redirect:/resource/list.do?demoId="
 						+ resource.getDemo().getId());
-				redir.addFlashAttribute("message2", "resource.commit.ok");
+				redir.addFlashAttribute("message", "resource.commit.ok");
 
 			} catch (Throwable oops) {
 				result = createEditModelAndView(resource);
 
-				result.addObject("message2", "resource.commit.error");
+				result.addObject("message", "resource.commit.error");
 			}
 		}
 
@@ -110,7 +110,7 @@ public class ResourceDeveloperController extends AbstractController {
 		result = new ModelAndView("resource/create");
 
 		result.addObject("resource", resource);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}
