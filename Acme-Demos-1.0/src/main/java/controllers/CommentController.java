@@ -72,6 +72,7 @@ public class CommentController extends AbstractController {
 		}
 		
 		result = new ModelAndView("comment/display");
+		result.addObject("id",comment.getId());
 		result.addObject("author",comment.getAuthor());
 		result.addObject("moment",comment.getMoment());
 		result.addObject("text",comment.getText());

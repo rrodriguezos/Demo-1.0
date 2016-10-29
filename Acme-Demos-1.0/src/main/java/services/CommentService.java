@@ -122,4 +122,15 @@ public class CommentService {
 		res.setStars(cf.getStars());
 		return res;
 	}
+
+	public Comment delete(int commentId) {
+		Comment result;
+		
+		this.checkPrincipalAdministrator();
+	
+		result = this.findOne(commentId);
+		commentRepository.delete(result);
+		
+		return result;
+	}
 }

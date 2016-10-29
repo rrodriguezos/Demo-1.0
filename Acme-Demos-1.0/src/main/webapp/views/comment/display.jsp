@@ -28,5 +28,9 @@
 <br>
 
 
+<security:authorize access="hasRole('ADMINISTRATOR')">
+	<input type="button" value="<spring:message code="comment.delete" />" 
+			onclick="javascript: window.location.assign('comment/administrator/delete.do?commentId=${id}')" />
+</security:authorize>
 
 <input type="button" name="back" value="<spring:message code="comment.cancel"/>" onclick="javascript: window.history.back()" />
