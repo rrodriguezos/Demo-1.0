@@ -123,6 +123,33 @@ public class DemoService {
 
 		return result;
 	}
+	public Collection<Demo> search(String keyword){
+		//TODO Alguien sabe hacerlo con query??
+		String keyMin = keyword.toLowerCase();
+		Collection<Demo> res = new ArrayList<Demo>();
+		Collection<Demo> all = findAll();
+		String min;
+		for(Demo d : all){
+			min = d.getTitle().toLowerCase();
+			if(min.contains(keyMin)){
+				res.add(d);
+			}
+			for(Description des : d.getDescriptions()){
+				min = des.getText().toLowerCase();
+				if(min.contains(keyMin)&&(!res.contains(d))){
+					res.add(d);
+				}
+			}
+			for(Resource r : d.getResources()){
+				min = r.getTitle().toLowerCase();
+				if((min.contains(keyMin))&&(!res.contains(d))){
+					res.add(d);
+				}
+			}
+		}
+		Assert.notNull(res);
+		return res;
+	}
 
 	// Dashboard Developer
 	public Double averageNumberOfCommentsByDemo() {

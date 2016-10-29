@@ -20,5 +20,7 @@ public interface DemoRepository extends JpaRepository<Demo, Integer> {
 
 //	@Query("")
 //	Double averageNumberOfStarsByDemo();
+	
+	
 
 }
