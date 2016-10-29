@@ -24,7 +24,7 @@
 <br>
 
 <b><spring:message code="comment.stars"/>:</b>
-<img src="<jstl:out value="${estrellas}" />" width="50" height="20" />
+<img src="<jstl:out value="${estrellas}" />"  />
 <br>
 
 

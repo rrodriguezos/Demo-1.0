@@ -61,13 +61,13 @@ public class CommentController extends AbstractController {
 			
 		switch(stars){
 			case 1:
-				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/1star.jpg";
+				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/1star.jpg?w=20&h=19";
 				break;
 			case 2:
-				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/2star.jpg";
+				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/2star.jpg?w=50&h=19";
 				break;
 			case 3:
-				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/3star.jpg";
+				estrellas = "https://fandangogroovers.files.wordpress.com/2010/01/3star.jpg?w=50&h=19";
 				break;
 		}
 		
