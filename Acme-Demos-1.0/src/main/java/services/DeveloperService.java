@@ -123,6 +123,14 @@ public class DeveloperService {
 		return res;
 	}
 
+	public Collection<Developer> developersMoreCommentsThanAvg() {
+		Collection<Developer> result;
+		
+		result = developerRepository.developersMoreCommentsThanAvg();
+		
+		return result;
+	}
+
 	
 
 }

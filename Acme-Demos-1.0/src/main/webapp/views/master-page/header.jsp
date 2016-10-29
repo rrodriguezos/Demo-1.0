@@ -41,7 +41,7 @@
 		</security:authorize>
 
 		<security:authorize access="hasRole('ADMINISTRATOR')">
-			<li><a class="fNiv" href="dashboard/administrator/list.do">
+			<li><a class="fNiv" href="dashboard/administrator/dashboard.do">
 					<spring:message code="master.page.administrator.dashboard" />
 			</a></li>
 

@@ -18,6 +18,9 @@ public interface DemoRepository extends JpaRepository<Demo, Integer> {
 	@Query("select avg(d.comments.size) from Demo d")
 	Double averageNumberOfCommentsByDemo();
 
+	@Query("select d from Demo d where d.comments.size >= 1.25 * (select avg(d.comments.size) from Demo d)")
+	Collection<Demo> demos25PercentageMoreCommentsThanAvg();
+
 //	@Query("")
 //	Double averageNumberOfStarsByDemo();
 	

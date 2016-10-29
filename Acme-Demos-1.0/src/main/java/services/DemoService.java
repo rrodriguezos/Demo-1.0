@@ -156,6 +156,13 @@ public class DemoService {
 		return demoRepository.averageNumberOfCommentsByDemo();
 	}
 
+	public Collection<Demo> demos25PercentageMoreCommentsThanAvg() {
+		Collection<Demo> result;
+		
+		result = demoRepository.demos25PercentageMoreCommentsThanAvg();
+		return result;
+	}
+
 	// public Double averageNumberOfStarsByDemo() {
 	// return demoRepository.averageNumberOfStarsByDemo();
 	// }
