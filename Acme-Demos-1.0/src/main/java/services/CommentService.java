@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import security.Authority;
 import domain.Actor;
 import domain.Comment;
 import domain.Demo;
+import forms.CommentForm;
 
 @Transactional
 @Service
@@ -53,6 +55,17 @@ public class CommentService {
 
 		return result;
 	}
+	
+	public Comment create(){
+		Comment res = new Comment();
+		res.setMoment(new Date(System.currentTimeMillis() - 100));
+		return res;
+	}
+	
+	public void save(Comment comment) {
+		Assert.notNull(comment);
+		commentRepository.saveAndFlush(comment);
+	}	
 
 	// Other Business Methods
 	// ------------------------------------------------------
@@ -100,5 +113,13 @@ public class CommentService {
 		result = commentRepository.demoSortedAverageNumberStars();
 
 		return result;
+	}
+	
+	public Comment reconstruct(CommentForm cf){
+		Comment res = create();
+		res.setText(cf.getText());
+		res.setAuthor(cf.getAuthor());
+		res.setStars(cf.getStars());
+		return res;
 	}
 }

@@ -44,5 +44,11 @@
 					onclick="javascript: window.location.assign('resource/list.do?demoId=${row.id}')" />
 	</display:column>
 	
+	<display:column title="${comments}">
+			<input type="button" value="<spring:message code="demo.comments" />" 
+					onclick="javascript: window.location.assign('comment/list.do?demoId=${row.id}')" />
+	</display:column>
+	
+	
 
 </display:table>

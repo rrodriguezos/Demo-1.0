@@ -51,7 +51,12 @@
 		<security:intercept-url pattern="/resource/display.do" access="permitAll" />
 		<security:intercept-url pattern="/resource/list.do" access="permitAll" />
 		<security:intercept-url pattern="/description/list.do" access="permitAll" />
-	
+		
+		<security:intercept-url pattern="/comment/display.do" access="permitAll" />
+		<security:intercept-url pattern="/comment/list.do" access="permitAll" />
+		<security:intercept-url pattern="/comment/create.do" access="permitAll" />
+		<security:intercept-url pattern="/comment/edit.do" access="permitAll" />
+		
   		<security:intercept-url pattern="/demo/developer/mylist.do" access="hasRole('DEVELOPER')" /> 
 		<security:intercept-url pattern="/demo/developer/edit.do" access="hasRole('DEVELOPER')" />
 		<security:intercept-url pattern="/demo/developer/create.do" access="hasRole('DEVELOPER')" />
