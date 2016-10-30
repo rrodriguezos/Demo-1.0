@@ -62,6 +62,7 @@ public class Demo extends DomainEntity {
 	private Collection<Resource> resource;
 	private Collection<Comment> comments;
 	private Collection<Description> descriptions;
+	private Collection<Investment> investments;
 
 	@Valid
 	@NotNull
@@ -105,5 +106,18 @@ public class Demo extends DomainEntity {
 	public void setDescriptions(Collection<Description> descriptions) {
 		this.descriptions = descriptions;
 	}
+	
+	
+	@Valid
+	@OneToMany(cascade={CascadeType.REMOVE,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},mappedBy="demo")
+	public Collection<Investment> getInvestments() {
+		return investments;
+	}
+
+	public void setInvestments(Collection<Investment> investments) {
+		this.investments = investments;
+	}
+	
+	
 
 }

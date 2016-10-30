@@ -59,6 +59,42 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="investor1" />
+		<property name="password" value="23152e35710ddbb79ccdc7b36502e849" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="INVESTOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="investor2" />
+		<property name="password" value="aad4a13e9dd1348158da63ce62982140" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="INVESTOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="investor3" />
+		<property name="password" value="ffd0fff96eef59f261298fd88e874424" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="INVESTOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 	<!-- Administrators -->
 
 	<bean id="administrator1" class="domain.Administrator">
@@ -119,7 +155,51 @@
 			</list>
 		</property>
 	</bean>
-
+	
+	<!-- Investors -->
+	<bean id="investor1" class="domain.Investor">
+		<property name="userAccount" ref="userAccount5" />
+		<property name="name" value="Tomas" />
+		<property name="surname" value="Fernandez" />
+		<property name="emailAddress" value="tomfer@acmedemos.com" />
+		<property name="phone" value="985784568" />
+		<property name="company" value="Ausa Tech" />
+		<property name="investments">
+			<list>
+				<ref bean="investment1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="investor2" class="domain.Investor">
+		<property name="userAccount" ref="userAccount6" />
+		<property name="name" value="Emiliano" />
+		<property name="surname" value="Sánchez" />
+		<property name="emailAddress" value="emiliano@acmedemos.com" />
+		<property name="phone" value="951248965" />
+		<property name="company" value="ThinkDev Solutions" />
+		<property name="investments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="investor3" class="domain.Investor">
+		<property name="userAccount" ref="userAccount7" />
+		<property name="name" value="Frank" />
+		<property name="surname" value="Mins" />
+		<property name="emailAddress" value="fmins@acmedemos.com" />
+		<property name="phone" value="963254746" />
+		<property name="company" value="Developtel S.A" />
+		<property name="investments">
+			<list>
+				<ref bean="investment2" />
+			</list>
+		</property>
+	</bean>
+	
+	
 	<!-- Demos -->
 	<bean id="demo1" class="domain.Demo">
 		<property name="title" value="Acme-Music" />
@@ -139,6 +219,11 @@
 		<property name="descriptions">
 			<list>
 				<ref bean="description1" />
+			</list>
+		</property>
+		<property name="investments">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -161,6 +246,11 @@
 		<property name="descriptions">
 			<list>
 				<ref bean="description2" />
+			</list>
+		</property>
+		<property name="investments">
+			<list>
+				<ref bean="investment2" />
 			</list>
 		</property>
 	</bean>
@@ -186,6 +276,11 @@
 				<ref bean="description10" />
 			</list>
 		</property>
+		<property name="investments">
+			<list>
+				
+			</list>
+		</property>
 	</bean>
 
 	<bean id="demo4" class="domain.Demo">
@@ -208,6 +303,11 @@
 				<ref bean="description11" />
 			</list>
 		</property>
+		<property name="investments">
+			<list>
+				
+			</list>
+		</property>
 	</bean>
 
 	<bean id="demo5" class="domain.Demo">
@@ -227,6 +327,11 @@
 		<property name="descriptions">
 			<list>
 				<ref bean="description5" />
+			</list>
+		</property>
+		<property name="investments">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -251,6 +356,11 @@
 				<ref bean="description6" />
 			</list>
 		</property>
+		<property name="investments">
+			<list>
+				<ref bean="investment2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="demo7" class="domain.Demo">
@@ -271,6 +381,11 @@
 			<list>
 			<ref bean="description7" />
 			<ref bean="description13" />
+			</list>
+		</property>
+		<property name="investments">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -294,6 +409,11 @@
 			<ref bean="description8" />
 			</list>
 		</property>
+		<property name="investments">
+			<list>
+				
+			</list>
+		</property>
 	</bean>
 
 	<bean id="demo9" class="domain.Demo">
@@ -313,6 +433,11 @@
 		<property name="descriptions">
 			<list>
 			<ref bean="description9" />
+			</list>
+		</property>
+		<property name="investments">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -515,7 +640,49 @@
 		<property name="isoCode" value="FRE" />
 		<property name="demo" ref="demo6" />
 	</bean>
-
-
-
+	
+	<!-- Investments -->
+	<bean id="investment1" class="domain.Investment">
+		<property name="approvalMoment" value="04/08/2016 17:11" />
+		<property name="description" value="Inversión anual de prueba" />
+		<property name="demo" ref="demo2" />
+		<property name="investor" ref="investor1" />
+		<property name="instalments">
+			<list>
+				<ref bean="instalment1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="investment2" class="domain.Investment">
+		<property name="approvalMoment" value="05/11/2015 19:34" />
+		<property name="description" value="Inversión Doble desarrollador potencial" />
+		<property name="demo" ref="demo6" />
+		<property name="investor" ref="investor3" />
+		<property name="instalments">
+			<list>
+				<ref bean="instalment2" />
+				<ref bean="instalment3" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Instalments -->
+	<bean id="instalment1" class="domain.Instalment">
+		<property name="instalmentDate" value="04/08/2016 17:11" />
+		<property name="amount" value="3000.0" />
+		<property name="investment" ref="investment1" />
+	</bean>
+	
+	<bean id="instalment2" class="domain.Instalment">
+		<property name="instalmentDate" value="05/11/2015 19:34" />
+		<property name="amount" value="1300.0" />
+		<property name="investment" ref="investment2" />
+	</bean>
+	
+	<bean id="instalment3" class="domain.Instalment">
+		<property name="instalmentDate" value="05/12/2015 00:00" />
+		<property name="amount" value="2500.0" />
+		<property name="investment" ref="investment2" />
+	</bean>
 </beans>

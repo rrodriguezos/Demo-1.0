@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.InvestorService;
+import domain.Investment;
 import domain.Investor;
 import forms.InvestorRegisterForm;
 

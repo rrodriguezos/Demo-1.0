@@ -16,6 +16,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
 import domain.Comment;
+import domain.Investment;
 import domain.Investor;
 import forms.InvestorRegisterForm;
 
