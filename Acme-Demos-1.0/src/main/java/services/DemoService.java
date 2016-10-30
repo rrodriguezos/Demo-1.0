@@ -102,27 +102,7 @@ public class DemoService {
 
 		Assert.isTrue(developer.equals(u));
 	}
-
-	// Repository Methods--------------------
-
-	public Collection<Demo> findDemosByDeveloper(int developerId) {
-		Collection<Demo> result;
-
-		result = demoRepository.findDemosByDeveloper(developerId);
-
-		return result;
-	}
-
-	public Collection<Demo> demoByDeveloperLogged() {
-		Collection<Demo> result;
-		Developer developer;
-
-		developer = developerService.findByPrincipal();
-
-		result = demoRepository.findDemosByDeveloper(developer.getId());
-
-		return result;
-	}
+	
 	public Collection<Demo> search(String keyword){
 		//TODO Alguien sabe hacerlo con query??
 		String keyMin = keyword.toLowerCase();
@@ -150,6 +130,28 @@ public class DemoService {
 		Assert.notNull(res);
 		return res;
 	}
+
+	// Repository Methods--------------------
+
+	public Collection<Demo> findDemosByDeveloper(int developerId) {
+		Collection<Demo> result;
+
+		result = demoRepository.findDemosByDeveloper(developerId);
+
+		return result;
+	}
+
+	public Collection<Demo> demoByDeveloperLogged() {
+		Collection<Demo> result;
+		Developer developer;
+
+		developer = developerService.findByPrincipal();
+
+		result = demoRepository.findDemosByDeveloper(developer.getId());
+
+		return result;
+	}
+	
 
 	// Dashboard Developer
 	public Double averageNumberOfCommentsByDemo() {
