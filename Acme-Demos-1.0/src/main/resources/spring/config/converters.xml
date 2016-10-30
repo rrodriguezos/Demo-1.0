@@ -15,6 +15,9 @@
 
 		<bean class="converters.StringToDeveloperConverter" />
 		<bean class="converters.DeveloperToStringConverter" />
+		
+		<bean class="converters.StringToInvestorConverter" />
+		<bean class="converters.InvestorToStringConverter" />
 
 		<bean class="converters.StringToDemoConverter" />
 		<bean class="converters.DemoToStringConverter" />
