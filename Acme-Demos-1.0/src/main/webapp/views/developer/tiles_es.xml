@@ -16,7 +16,7 @@
        
 <tiles-definitions>
 	<definition name="developer/register" extends="master.page">	
-		<put-attribute name="title" value="Registro" />
+		<put-attribute name="title" value="Registro Desarrollador" />
 		<put-attribute name="body" value="/views/developer/register.jsp" />
 	</definition>
 	

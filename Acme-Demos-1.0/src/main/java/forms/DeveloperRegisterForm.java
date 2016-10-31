@@ -2,25 +2,35 @@ package forms;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.hibernate.validator.constraints.ScriptAssert;
 
-//@ScriptAssert(lang = "javascript", script = "_this.password.equals(_this.confirmPassword)")
+@ScriptAssert(lang = "javascript", script = "_this.password.equals(_this.confirmPassword)")
 public class DeveloperRegisterForm {
-
 	private String password;
-
+	private String passwordPast;
 	private String confirmPassword;
 	private String username;
 	private String name;
 	private String surname;
 	private String phone;
 	private String emailAddress;
+	
 	private Boolean accept;
+	private Integer id;
+
+	// Constructors...................
+
+	public DeveloperRegisterForm() {
+		super();
+		id = 0;
+	}
 
 	// Getters and Setters........
 
@@ -44,6 +54,15 @@ public class DeveloperRegisterForm {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	@SafeHtml(whitelistType = WhiteListType.NONE)
+	public String getPasswordPast() {
+		return passwordPast;
+	}
+
+	public void setPasswordPast(String passwordPast) {
+		this.passwordPast = passwordPast;
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -79,6 +98,7 @@ public class DeveloperRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Pattern(regexp = "(\\+[0-9]{1,2} ([(][0-9]{0,3}[)] [0-9]{4,9}|[0-9]{4,9})|^$)")
 	public String getPhone() {
 		return phone;
 	}
@@ -88,6 +108,7 @@ public class DeveloperRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@NotBlank
 	@Email
 	public String getEmailAddress() {
 		return emailAddress;
@@ -95,6 +116,14 @@ public class DeveloperRegisterForm {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@NotNull
@@ -105,5 +134,7 @@ public class DeveloperRegisterForm {
 	public void setAccept(Boolean accept) {
 		this.accept = accept;
 	}
+
+	
 
 }

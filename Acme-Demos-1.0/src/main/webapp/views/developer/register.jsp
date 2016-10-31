@@ -31,41 +31,39 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<security:authorize access="isAnonymous()">
 
+	<form:form action="developer/register.do"
+		modelAttribute="developerRegisterForm">
 
-<form:form requestURI="${requestUri}" modelAttribute="developerForm">
-	<fieldset>
-		<legend align="left">
-			<spring:message code="developer.userAccount" />
-		</legend>
-		<acme:textbox code="developer.userAccount.username" path="username" />
-		<acme:password code="developer.userAccount.password" path="password" />
-		<acme:password code="developer.userAccount.repeatPassword"
-			path="confirmPassword" />
-	</fieldset>
+		<fieldset>
+			<legend align="left">
+				<spring:message code="developer.userAccount" />
+			</legend>
+			<acme:textbox code="developer.username" path="username" />
 
-	<fieldset>
-		<legend align="left">
-			<spring:message code="developer.personalInfo" />
-		</legend>
-		<acme:textbox code="developer.name" path="name" />
-		<acme:textbox code="developer.surname" path="surname" />
-		<acme:textbox code="developer.email" path="emailAddress" />
-		<acme:textbox code="developer.phone" path="phone" />
+			<acme:password code="developer.password" path="password" />
+			<acme:password code="developer.repeatPassword" path="confirmPassword" />
+		</fieldset>
+		<fieldset>
+			<legend align="left">
+				<spring:message code="developer.personalInfo" />
+			</legend>
+			<acme:textbox code="developer.name" path="name" />
 
-	</fieldset>
+			<acme:textbox code="developer.surname" path="surname" />
+			
 
-	<p>
-		<acme:checkbox code="developer.acceptConditions" path="accept" />
+			<acme:textbox code="developer.email" path="emailAddress" />
 
-		<a href="legalTerms/legalTerms.do"> <spring:message
-				code="developer.registration" />
-		</a> <br> <br>
+			<acme:textbox code="developer.phone" path="phone" />
+		</fieldset>
+		<p>
+			<acme:checkbox code="developer.acceptConditions" path="accept"
+				url="welcome/conditions.do" />
 
-		<acme:submit name="save" code="developer.edit.save" />
+			<acme:submit name="save" code="developer.edit.save" />
+			<acme:cancel url="welcome/index.do" code="return" />
+	</form:form>
 
-		<input type="button" name="cancel"
-			value="<spring:message code="return"/>"
-			onclick="javascript: window.location.replace('')" />
-</form:form>
-
+</security:authorize>

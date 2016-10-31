@@ -24,7 +24,7 @@ import domain.Developer;
 import forms.DeveloperRegisterForm;
 
 import security.UserAccountRepository;
-import services.DemoService;
+
 import services.DeveloperService;
 
 @Controller
@@ -34,8 +34,7 @@ public class DeveloperController extends AbstractController {
 	// Services ---------------------------------------------------------------
 	@Autowired
 	private DeveloperService developerService;
-	@Autowired
-	private DemoService demoService;
+	
 	
 	@Autowired
 	private UserAccountRepository userAccountRepository;
@@ -92,7 +91,7 @@ public class DeveloperController extends AbstractController {
 	protected ModelAndView createEditModelAndView(DeveloperRegisterForm df,String message){
 		
 		ModelAndView res = new ModelAndView("developer/register");
-		res.addObject("developerForm", df);
+		res.addObject("developerRegisterForm", df);
 		res.addObject("message", message);
 		res.addObject("requestUri","developer/register.do");
 		return res;
