@@ -38,6 +38,12 @@
 
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.CommentToStringConverter" />
+		
+		<bean class="converters.InvestmentToStringConverter" />
+		<bean class="converters.StringToInvestmentConverter" />
+		
+		<bean class="converters.InstalmentToStringConverter" />
+		<bean class="converters.StringToInstalmentConverter" />
 
 
 	</util:list>

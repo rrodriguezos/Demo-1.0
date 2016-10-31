@@ -49,6 +49,12 @@
 					onclick="javascript: window.location.assign('comment/list.do?demoId=${row.id}')" />
 	</display:column>
 	
+	<security:authorize access="hasRole('INVESTOR')">
+		<display:column titleKey="investment.create">
+			<input type="button" value="<spring:message code="investment.create" />" 
+					onclick="javascript: window.location.assign('investment/investor/create.do?demoId=${row.id}')" />
+		</display:column>
+	</security:authorize>
 	
 
 </display:table>
