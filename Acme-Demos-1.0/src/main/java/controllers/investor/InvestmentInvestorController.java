@@ -41,7 +41,7 @@ public class InvestmentInvestorController extends AbstractController {
 
 		result = new ModelAndView("investment/list");
 		result.addObject("investments", investments);
-		
+		result.addObject("requestUri", "/investment/investor/list.do");
 		
 		return result;
 		}

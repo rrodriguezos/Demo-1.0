@@ -82,5 +82,11 @@ public class InstalmentService {
 
 		Assert.isTrue(inv.equals(i));
 	}
+	
+	public Collection<Instalment> findByInvestment(int investmentId){
+		Collection<Instalment> result = instalmentRepository.findByInvestment(investmentId);
+		Assert.notNull(result);
+		return result;
+	}
 
 }

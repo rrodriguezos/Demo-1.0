@@ -48,6 +48,11 @@
 			</a></li>
 
 		</security:authorize>
+		
+		<security:authorize access="hasRole('INVESTOR')">
+			
+
+		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">
 			<li><a class="fNiv"> <spring:message
@@ -56,7 +61,8 @@
 			</a>
 				<ul>
 					<li class="arrow"></li>
-
+					<li><a href="j_spring_security_logout"> <spring:message
+						code="master.page.logout" /></a></li>
 					<security:authorize access="hasRole('DEVELOPER')">
 						<li><a href="demo/developer/mylist.do"><spring:message
 									code="master.page.developer.mydemos" /></a></li>
@@ -65,12 +71,15 @@
 									<li><a href="dashboard/developer/list.do"><spring:message
 									code="master.page.developer.dashboard" /></a></li>
 					</security:authorize>
+					<security:authorize access="hasRole('INVESTOR')">
+						<li><a href="investment/investor/list.do">
+					<spring:message code="master.page.investor.investments" /></a></li>
+					</security:authorize>
 
 
 
 				</ul></li>
-			<li><a href="j_spring_security_logout"> <spring:message
-						code="master.page.logout" /></a></li>
+			
 		</security:authorize>
 	</ul>
 </div>

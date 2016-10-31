@@ -17,25 +17,23 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<display:table name="investments" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
+<display:table name="instalments" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
 	
-	<display:column property="approvalMoment" titleKey="investment.approvalMoment"
+	<display:column property="instalmentDate" titleKey="instalment.instalmentDate"
 		format="{0,date,dd/MM/yyyy HH:mm}" sortable="true" />
 	
-	<display:column property="description" titleKey="investment.description" />
-	
-	<display:column titleKey="investment.demo">
-			<input type="button" value="<spring:message code="investment.demo" />" 
-					onclick="javascript: window.location.assign('demo/display.do?demoId=${row.demo.id}')" />
+	<display:column property="amount" titleKey="instalment.amount" />
+	<spring:message code="instalment.edit" var="edit" />
+	<display:column title="${edit}">
+			<input type="button" value="<spring:message code="instalment.edit" />" 
+					onclick="javascript: window.location.assign('instalment/investor/edit.do?instalmentId=${row.id}')" />
 	</display:column>
 	
-	<display:column titleKey="investment.instalments">
-			<input type="button" value="<spring:message code="investment.instalments" />" 
-					onclick="javascript: window.location.assign('instalment/investor/list.do?investmentId=${row.id}')" />
-	</display:column>
 	
 	
 	
 	
 
 </display:table>
+<input type="button" value="<spring:message code="instalment.create" />" 
+					onclick="javascript: window.location.assign('instalment/investor/create.do?investmentId=${investmentId}')" />
