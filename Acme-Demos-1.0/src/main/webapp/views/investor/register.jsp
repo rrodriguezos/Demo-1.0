@@ -33,28 +33,37 @@
 
 <security:authorize access="isAnonymous()">
 
-	<form:form action="user/register.do" modelAttribute="userRegisterForm">
+	<form:form action="investor/register.do"
+		modelAttribute="investorRegisterForm">
 
+		<fieldset>
+			<legend align="left">
+				<spring:message code="investor.userAccount" />
+			</legend>
+			<acme:textbox code="investor.username" path="username" />
 
-		<acme:textbox code="user.username" path="username" />
+			<acme:password code="investor.password" path="password" />
+			<acme:password code="investor.confirmPassword" path="confirmPassword" />
+		</fieldset>
+		<fieldset>
+			<legend align="left">
+				<spring:message code="investor.personalInfo" />
+			</legend>
+			<acme:textbox code="investor.name" path="name" />
 
-		<acme:password code="user.password" path="password" />
-		<acme:password code="user.confirmPassword" path="confirmPassword" />
+			<acme:textbox code="investor.surname" path="surname" />
+			<acme:textbox code="investor.company" path="company" />
 
-		<acme:textbox code="user.name" path="name" />
+			<acme:textbox code="investor.emailAddress" path="emailAddress" />
 
-		<acme:textbox code="user.surname" path="surname" />
+			<acme:textbox code="investor.phone" path="phone" />
+		</fieldset>
+		<p>
+			<acme:checkbox code="investor.accept" path="accept"
+				url="welcome/conditions.do" />
 
-		<acme:textbox code="user.emailAddress" path="emailAddress" />
-
-		<acme:textbox code="user.phone" path="phone" />
-
-		<acme:checkbox code="user.accept" path="accept"
-			url="welcome/conditions.do" />
-
-		<acme:submit name="save" code="user.save" />
-		<acme:cancel url="welcome/index.do" code="user.cancel" />
-
+			<acme:submit name="save" code="investor.save" />
+			<acme:cancel url="welcome/index.do" code="investor.cancel" />
 	</form:form>
 
 </security:authorize>

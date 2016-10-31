@@ -35,7 +35,9 @@
 
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="developer/register.do"> <spring:message
-						code="master.page.register" /></a></li>
+						code="master.page.DeveloperRegister" /></a></li>
+						<li><a class="fNiv" href="investor/register.do"> <spring:message
+						code="master.page.InvestorRegister" /></a></li>
 			<li><a class="fNiv" href="security/login.do"> <spring:message
 						code="master.page.login" /></a></li>
 		</security:authorize>

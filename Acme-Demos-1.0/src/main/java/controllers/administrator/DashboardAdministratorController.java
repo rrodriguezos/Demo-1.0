@@ -44,7 +44,7 @@ public class DashboardAdministratorController extends AbstractController {
 		Collection<Developer> developersMoreCommentsThanAvg;
 		
 		
-		avgNumberCommentsPerDemo = commentService.averageCommentsPerDemo();
+		avgNumberCommentsPerDemo = commentService.averageCommentsPerDemoByDeveloperId();
 		
 		demos25PercentageMoreCommentsThanAvg = demoService.demos25PercentageMoreCommentsThanAvg();
 		

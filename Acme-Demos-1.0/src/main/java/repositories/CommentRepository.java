@@ -14,13 +14,13 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
 	@Query("select c from Comment c where c.demo.id = ?1")
 	Collection<Comment> findCommentsByDemoId(int demoId);
-
-	@Query("select avg(d.comments.size) from Demo d")
-	Double averageCommentsPerDemo();
-
+//FUNCIONA
+	@Query("select avg(d.comments.size) from Demo d where d.developer.id =?1")
+	Double averageCommentsPerDemoByDeveloperId(int developerId);
+	//NO FUNCIONA debe ser de un developer en concreto
 	@Query("select sum(c.stars) from Comment c join c.demo d)/count(d) * 1.0)  from Demo d")
-	Double averageStarsPerDemo();
-
+	Double averageStarsPerDemoByDeveloper();
+	//NO FUNCIONA debe ser de un developer en concreto
 	@Query("select c.demo from Comment c Group by c.demo order by avg(c.stars) desc")
-	Collection<Demo> demoSortedAverageNumberStars();
+	Collection<Demo> demoSortedAverageNumberStarsByDeveloper();
 }

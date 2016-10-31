@@ -13,6 +13,7 @@ import security.Authority;
 import domain.Actor;
 import domain.Comment;
 import domain.Demo;
+import domain.Developer;
 import forms.CommentForm;
 
 @Transactional
@@ -35,6 +36,8 @@ public class CommentService {
 
 	@Autowired
 	private ActorService actorService;
+	@Autowired
+	private DeveloperService developerService;
 
 	// CRUD methods-------------------------------------------------------------
 	public Collection<Comment> findAll() {
@@ -91,26 +94,32 @@ public class CommentService {
 		return result;
 	}
 
-	public Double averageCommentsPerDemo() {
+	public Double averageCommentsPerDemoByDeveloperId() {
 		Double result;
-
-		result = commentRepository.averageCommentsPerDemo();
+		Developer developer;
+		developer = developerService.findByPrincipal();
+		int developerId;
+		developerId = developer.getId();
+		result = commentRepository.averageCommentsPerDemoByDeveloperId(developerId);
 
 		return result;
 	}
 
-	public Double averageStarsPerDemo() {
+	public Double averageStarsPerDemoByDeveloper() {
 		Double result;
-
-		result = commentRepository.averageStarsPerDemo();
+		Developer developer;
+		developer = developerService.findByPrincipal();
+		
+		result = commentRepository.averageStarsPerDemoByDeveloper();
 
 		return result;
 	}
 
-	public Collection<Demo> demoSortedAverageNumberStars() {
+	public Collection<Demo> demoSortedAverageNumberStarsByDeveloper() {
 		Collection<Demo> result;
-
-		result = commentRepository.demoSortedAverageNumberStars();
+		Developer developer;
+		developer = developerService.findByPrincipal();
+		result = commentRepository.demoSortedAverageNumberStarsByDeveloper();
 
 		return result;
 	}

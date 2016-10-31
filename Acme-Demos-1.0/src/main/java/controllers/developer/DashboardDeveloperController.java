@@ -30,15 +30,15 @@ public class DashboardDeveloperController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		// Average number of comments per demo.
-		Double averageCommentsPerDemo = commentService.averageCommentsPerDemo();
+		Double averageCommentsPerDemo = commentService.averageCommentsPerDemoByDeveloperId();
 
 		// Average number of stars per demo.
-		Double averageStarsPerDemo = commentService.averageStarsPerDemo();
+		Double averageStarsPerDemo = commentService.averageStarsPerDemoByDeveloper();
 
 		// List of demos sorted according the average number of stars that
 		// they ve got
 		Collection<Demo> demoSortedAverageNumberStars = commentService
-				.demoSortedAverageNumberStars();
+				.demoSortedAverageNumberStarsByDeveloper();
 
 		result = new ModelAndView("developer/dashboard");
 		result.addObject("averageCommentsPerDemo", averageCommentsPerDemo);
