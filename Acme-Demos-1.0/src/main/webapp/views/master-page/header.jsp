@@ -34,10 +34,17 @@
 
 
 		<security:authorize access="isAnonymous()">
-			<li><a class="fNiv" href="developer/register.do"> <spring:message
+			<li><a class="fNiv"> <spring:message
+						code="master.page.register" /> 
+			</a>
+				<ul>
+					<li class="arrow"></li>
+						<li><a  href="developer/register.do"> <spring:message
 						code="master.page.DeveloperRegister" /></a></li>
-						<li><a class="fNiv" href="investor/register.do"> <spring:message
+						<li><a  href="investor/register.do"> <spring:message
 						code="master.page.InvestorRegister" /></a></li>
+				</ul>
+			</li>
 			<li><a class="fNiv" href="security/login.do"> <spring:message
 						code="master.page.login" /></a></li>
 		</security:authorize>
@@ -61,8 +68,7 @@
 			</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="j_spring_security_logout"> <spring:message
-						code="master.page.logout" /></a></li>
+					
 					<security:authorize access="hasRole('DEVELOPER')">
 						<li><a href="demo/developer/mylist.do"><spring:message
 									code="master.page.developer.mydemos" /></a></li>
@@ -75,7 +81,8 @@
 						<li><a href="investment/investor/list.do">
 					<spring:message code="master.page.investor.investments" /></a></li>
 					</security:authorize>
-
+					<li><a href="j_spring_security_logout"> <spring:message
+						code="master.page.logout" /></a></li>
 
 
 				</ul></li>
