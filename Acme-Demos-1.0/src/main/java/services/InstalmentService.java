@@ -89,4 +89,21 @@ public class InstalmentService {
 		return result;
 	}
 
+	/***************** Principio *****************/
+	public Double  avgMoneyInvestInDemos() {
+		Double result;
+		
+		result = instalmentRepository.avgMoneyInvestInDemos();
+		
+		return result;
+	}
+	
+	public Double  avgNumberInstalmentsPerInvestment() {
+		Double result;
+		
+		result = instalmentRepository.avgNumberInstalmentsPerInvestment();
+		
+		return result;
+	}
+	/***************** Fin *****************/
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -172,5 +173,15 @@ public class DemoService {
 	// public Collection<Demo> demosSortedByStars() {
 	// return demoRepository.demosSortedByStars();
 	// }
+	
+	/***************** Principio *****************/
+	public Double  ratioDemosWithInvestment() {
+		Double result;
+		
+		result = demoRepository.ratioDemosWithInvestment();
+		
+		return result;
+	}
+	/***************** Fin *****************/
 
 }

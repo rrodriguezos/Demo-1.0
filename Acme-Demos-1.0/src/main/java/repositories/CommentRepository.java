@@ -23,4 +23,14 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	//NO FUNCIONA debe ser de un developer en concreto
 	@Query("select c.demo from Comment c Group by c.demo order by avg(c.stars) desc")
 	Collection<Demo> demoSortedAverageNumberStarsByDeveloper();
+	
+	@Query("select avg(d.comments.size) from Demo d")
+	Double averageCommentsPerDemo();
+	
+    @Query("select sum(c.stars) from Comment c join c.demo d)/count(d) * 1.0)  from Demo d")
+    Double averageStarsPerDemo();
+
+    @Query("select c.demo from Comment c Group by c.demo order by avg(c.stars) desc")
+    Collection<Demo> demoSortedAverageNumberStars();
+
 }

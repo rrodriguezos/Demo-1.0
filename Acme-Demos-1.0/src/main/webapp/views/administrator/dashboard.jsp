@@ -64,4 +64,35 @@
 </display:table>
 
 
+<!--  The ratio of demos that have got an investment -->
+<p>
+	<h4><spring:message code="administrator.dashboard.ratioDemosWithInvestment" /></h4>
+</p>
+<jstl:out value="${ratioDemosWithInvestment}" />
+<br>
 
+<!--  The average and the standard deviation of the number of investments per investor -->
+<p>
+	<h4><spring:message code="administrator.dashboard.avgInvestmentsPerInvestor" /></h4>
+</p>
+<jstl:out value="${avgStddevInvestmentsPerInvestor[0][0]}" />
+<br>
+<p>
+	<h4><spring:message code="administrator.dashboard.stddevInvestmentsPerInvestor" /></h4>
+</p>
+<jstl:out value="${avgStddevInvestmentsPerInvestor[0][1]}" />
+<br>
+
+<!--  The average amount of money that investors invest in demos -->
+<p>
+	<h4><spring:message code="administrator.dashboard.avgMoneyInvestInDemos" /></h4>
+</p>
+<jstl:out value="${avgMoneyInvestInDemos}" />
+<br>
+
+<!--  The average number of instalments per investment -->
+<p>
+	<h4><spring:message code="administrator.dashboard.avgNumberInstalmentsPerInvestment" /></h4>
+</p>
+<jstl:out value="${avgNumberInstalmentsPerInvestment}" />
+<br>

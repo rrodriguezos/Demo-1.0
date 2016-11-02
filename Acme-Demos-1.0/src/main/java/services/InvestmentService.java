@@ -112,5 +112,15 @@ public class InvestmentService {
 		
 		return result;
 	}
+	
+	/***************** Principio *****************/
+	public Collection<Object[]>  avgStddevInvestmentsPerInvestor() {
+		Collection<Object[]> result;
+		
+		result = investmentRepository.avgStddevInvestmentsPerInvestor();
+		
+		return result;
+	}
+	/***************** Fin *****************/
 
 }

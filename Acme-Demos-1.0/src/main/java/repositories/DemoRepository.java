@@ -24,6 +24,8 @@ public interface DemoRepository extends JpaRepository<Demo, Integer> {
 //	@Query("")
 //	Double averageNumberOfStarsByDemo();
 	
-	
-
+	/***************** Principio *****************/
+	@Query("select round((select count(d) * 1.0 from Demo d where d.investments.size > 0) / count(d), 2) from Demo d")
+	Double  ratioDemosWithInvestment();
+	/***************** Fin *****************/
 }

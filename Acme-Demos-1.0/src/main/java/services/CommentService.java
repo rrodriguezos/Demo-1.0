@@ -94,6 +94,14 @@ public class CommentService {
 		return result;
 	}
 
+    public Double averageCommentsPerDemo() {
+    	Double result;
+
+    	result = commentRepository.averageCommentsPerDemo();
+
+        return result;
+    }
+
 	public Double averageCommentsPerDemoByDeveloperId() {
 		Double result;
 		Developer developer;
