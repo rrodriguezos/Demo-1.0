@@ -468,7 +468,7 @@
 		<property name="demo" ref="demo1" />
 		<property name="text" value="Texto 1" />
 		<property name="moment" value="02/02/2016" />
-		<property name="stars" value="1" />
+		<property name="stars" value="3" />
 	</bean>
 
 	<bean id="comment2" class="domain.Comment">
@@ -492,7 +492,7 @@
 		<property name="demo" ref="demo4" />
 		<property name="text" value="Texto 4" />
 		<property name="moment" value="02/03/2015" />
-		<property name="stars" value="1" />
+		<property name="stars" value="3" />
 	</bean>
 
 	<bean id="comment5" class="domain.Comment">

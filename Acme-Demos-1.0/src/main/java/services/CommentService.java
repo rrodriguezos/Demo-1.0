@@ -116,9 +116,10 @@ public class CommentService {
 	public Double averageStarsPerDemoByDeveloper() {
 		Double result;
 		Developer developer;
+		int developerId;
 		developer = developerService.findByPrincipal();
-		
-		result = commentRepository.averageStarsPerDemoByDeveloper();
+		developerId = developer.getId();
+		result = commentRepository.averageStarsPerDemoByDeveloper(developerId);
 
 		return result;
 	}
@@ -126,8 +127,10 @@ public class CommentService {
 	public Collection<Demo> demoSortedAverageNumberStarsByDeveloper() {
 		Collection<Demo> result;
 		Developer developer;
+		int developerId;
 		developer = developerService.findByPrincipal();
-		result = commentRepository.demoSortedAverageNumberStarsByDeveloper();
+		developerId = developer.getId();
+		result = commentRepository.demoSortedAverageNumberStarsByDeveloper(developerId);
 
 		return result;
 	}
