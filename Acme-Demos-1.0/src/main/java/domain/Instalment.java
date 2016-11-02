@@ -28,13 +28,14 @@ public class Instalment extends DomainEntity {
 	//Attributes-----------------
 	private Date instalmentDate;
 	private Double amount;
-	public Date getInstalmentDate() {
-		return instalmentDate;
-	}
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
+	public Date getInstalmentDate() {
+		return instalmentDate;
+	}
+	
 	public void setInstalmentDate(Date instalmentDate) {
 		this.instalmentDate = instalmentDate;
 	}
