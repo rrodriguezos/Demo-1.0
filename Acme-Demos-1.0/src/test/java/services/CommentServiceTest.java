@@ -1,7 +1,5 @@
 package services;
 
-import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Demo;
-
-
+import domain.Comment;
 
 import utilities.AbstractTest;
 
@@ -20,40 +16,31 @@ import utilities.AbstractTest;
 @ContextConfiguration(locations = { "classpath:spring/datasource.xml", "classpath:spring/config/packages.xml" })
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
-public class DemoServiceTest extends AbstractTest {
+public class CommentServiceTest extends AbstractTest {
 	
 	//BAsed services test---
+	@Autowired
+	private CommentService commentService;
 	@Autowired
 	private DemoService demoService;
 	
 	
 	/*
-	 An actor who is not authenticated must be able to:
-		Search the catalogue of demos using a single key 
-		word that must appear somewhere in its tile,its 
-		description, or the title of the corresponding 
-		resources, if any.
-	 */
-	@Test
-	public void search(){
-		Collection<Demo>encontrados = demoService.search("testo");
-		for(Demo d : encontrados){
-			System.out.println(d.getTitle());
-		}
-	}
-	
-	/*
 	 * An actor who is not authenticated must be able to:
-		List the demos available.
+		Post a comment about a demo.
 	 */
 	@Test
-	public void catalogue(){
-		Collection<Demo>encontrados = demoService.findAll();
-		for(Demo d : encontrados){
-			System.out.println(d.getTitle());
-		}
+	public void create(){
+		Comment c = commentService.create();
+		c.setAuthor("Peter Crouch");
+		c.setDemo(demoService.findOne(17));
+		c.setStars(2);
+		c.setText("Cool Demo");
+		
+		commentService.save(c);
+		
+		for(Comment com : commentService.findAll())
+			System.out.println(com.getAuthor() + ": " + com.getText() + " (" +com.getMoment() +")");
 	}
-	
-	
 
 }

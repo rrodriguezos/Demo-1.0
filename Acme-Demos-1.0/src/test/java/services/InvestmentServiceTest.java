@@ -10,9 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Demo;
-
-
+import domain.Investment;
 
 import utilities.AbstractTest;
 
@@ -20,40 +18,27 @@ import utilities.AbstractTest;
 @ContextConfiguration(locations = { "classpath:spring/datasource.xml", "classpath:spring/config/packages.xml" })
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
-public class DemoServiceTest extends AbstractTest {
+public class InvestmentServiceTest extends AbstractTest {
 	
 	//BAsed services test---
 	@Autowired
-	private DemoService demoService;
+	private InvestmentService investmentService;
+	@Autowired
+	private InvestorService investorService;
 	
 	
 	/*
-	 An actor who is not authenticated must be able to:
-		Search the catalogue of demos using a single key 
-		word that must appear somewhere in its tile,its 
-		description, or the title of the corresponding 
-		resources, if any.
+	 * An actor who is authenticated as an investor must be able to:
+		Manage his or her investments, which includes listing them...
 	 */
 	@Test
-	public void search(){
-		Collection<Demo>encontrados = demoService.search("testo");
-		for(Demo d : encontrados){
-			System.out.println(d.getTitle());
+	public void list(){
+		authenticate("investor1");
+		Collection<Investment>inv = investmentService.findInvestmentByInvestor(investorService.findByPrincipal().getId());
+		
+		for(Investment i : inv){
+			System.out.println(i.getDescription());
 		}
 	}
-	
-	/*
-	 * An actor who is not authenticated must be able to:
-		List the demos available.
-	 */
-	@Test
-	public void catalogue(){
-		Collection<Demo>encontrados = demoService.findAll();
-		for(Demo d : encontrados){
-			System.out.println(d.getTitle());
-		}
-	}
-	
-	
 
 }
