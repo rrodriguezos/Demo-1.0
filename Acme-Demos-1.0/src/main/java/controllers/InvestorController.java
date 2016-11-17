@@ -23,126 +23,141 @@ import forms.InvestorRegisterForm;
 @RequestMapping("/investor")
 public class InvestorController extends AbstractController {
 	// Services ---------------------------------------------------------------
-		@Autowired
-		private InvestorService investorService;
-		@Autowired
-		private InvestmentService investmentService;
+	@Autowired
+	private InvestorService investorService;
+	@Autowired
+	private InvestmentService investmentService;
 
-		// Constructors -----------------------------------------------------------
+	// Constructors -----------------------------------------------------------
 
-		public InvestorController() {
-			super();
-		}
+	public InvestorController() {
+		super();
+	}
 
-		// List ------------------------------------------------------------------
-		@RequestMapping(value = "/list", method = RequestMethod.GET)
-		public ModelAndView list() {
-			ModelAndView result;
-			Collection<Investor> investors;
+	// List ------------------------------------------------------------------
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Investor> investors;
 
-			investors = investorService.findAll();
+		investors = investorService.findAll();
 
-			result = new ModelAndView("investor/list");
-			result.addObject("investors", investors);
-			result.addObject("requestUri", "investor/list.do");
+		result = new ModelAndView("investor/list");
+		result.addObject("investors", investors);
+		result.addObject("requestUri", "investor/list.do");
 
-			return result;
-		}
+		return result;
+	}
 
-		// Create ---------------------------------------------------------------
+	// Create ---------------------------------------------------------------
 
-		@RequestMapping(value = "/register", method = RequestMethod.GET)
-		public ModelAndView create() {
-			ModelAndView result;
-			InvestorRegisterForm investorRegisterForm;
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView result;
+		InvestorRegisterForm investorRegisterForm;
 
-			investorRegisterForm = new InvestorRegisterForm();
+		investorRegisterForm = new InvestorRegisterForm();
 
-			result = new ModelAndView("investor/register");
-			result.addObject("investorRegisterForm", investorRegisterForm);
-			return result;
-		}
+		result = new ModelAndView("investor/register");
+		result.addObject("investorRegisterForm", investorRegisterForm);
+		return result;
+	}
 
-		// Save ----------------------------------------------------------------
+	// Save ----------------------------------------------------------------
 
-		@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-		public ModelAndView register(@Valid InvestorRegisterForm investorRegisterForm,
-				BindingResult binding) {
-			ModelAndView result;
-			Investor investor;
-			Boolean verificarContrasenas;
+	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+	public ModelAndView register(
+			@Valid InvestorRegisterForm investorRegisterForm,
+			BindingResult binding) {
+		ModelAndView result;
+		Investor investor;
+		Boolean verificarContrasenas;
 
-			verificarContrasenas = investorRegisterForm.getPassword().equals(
-					investorRegisterForm.getConfirmPassword());
+		verificarContrasenas = investorRegisterForm.getPassword().equals(
+				investorRegisterForm.getConfirmPassword());
 
-			if (binding.hasErrors() || !verificarContrasenas
-					|| !investorRegisterForm.getAccept()) {
-				result = createEditModelAndView(investorRegisterForm);
-				if (!verificarContrasenas) {
-					result.addObject("message", "register.commit.password");
-				}
-				if (!investorRegisterForm.getAccept()) {
-					result.addObject("message", "register.commit.condition");
-				}
-			} else {
-				try {
-					investor = investorService.reconstruct(investorRegisterForm);
-					investorService.save(investor);
-					result = new ModelAndView("redirect:/");
-				} catch (Throwable oops) {
-					result = new ModelAndView("investor/register");
-					result.addObject("investorRegisterForm", investorRegisterForm);
+		if (binding.hasErrors()
+				|| !verificarContrasenas
+				|| !investorRegisterForm.getAccept()
+				|| (investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
+						.getPhone().isEmpty())
+				|| (!investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
+						.getPhone().length() != 9)) {
+			result = createEditModelAndView(investorRegisterForm,
+					"register.commit.error");
+			if (!verificarContrasenas) {
+				result.addObject("message", "register.commit.password");
+			}
+			if (!investorRegisterForm.getAccept()) {
+				result.addObject("message", "register.commit.condition");
+			}
+			if (investorRegisterForm.getEmailAddress().isEmpty()
+					&& investorRegisterForm.getPhone().isEmpty()) {
+				result.addObject("message", "register.not.phone.neither.mail");
+			}
+			if (!investorRegisterForm.getPhone().isEmpty()
+					&& investorRegisterForm.getPhone().length() != 9) {
+				result.addObject("message", "register.phone.wrongLength");
+			}
+		} else {
+			try {
+				investor = investorService.reconstruct(investorRegisterForm);
+				investorService.save(investor);
+				result = new ModelAndView("redirect:/");
+			} catch (Throwable oops) {
+				result = new ModelAndView("investor/register");
+				result.addObject("investorRegisterForm", investorRegisterForm);
 
-					if (oops instanceof DataIntegrityViolationException) {
-						result.addObject("message",
-								"register.commit.duplicatedInvestorname");
-					} else {
-						result.addObject("message", "register.commit.error");
-					}
+				if (oops instanceof DataIntegrityViolationException) {
+					result.addObject("message",
+							"register.commit.duplicatedInvestorname");
+				} else {
+					result.addObject("message", "register.commit.error");
 				}
 			}
-
-			return result;
 		}
 
-		// Display -----------------------------------------------------------------
-		@RequestMapping(value = "/display", method = RequestMethod.GET)
-		public ModelAndView display(int investorId) {
-			ModelAndView result;
-			Investor investor;
-			Collection<Investment> investments;
+		return result;
+	}
 
-			investor = investorService.findOne(investorId);
-			investments = investmentService.findInvestmentByInvestor(investorId);
+	// Display -----------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(int investorId) {
+		ModelAndView result;
+		Investor investor;
+		Collection<Investment> investments;
 
-			result = new ModelAndView("investor/display");
-			result.addObject("investor", investor);
-			result.addObject("investments", investments);
+		investor = investorService.findOne(investorId);
+		investments = investmentService.findInvestmentByInvestor(investorId);
 
-			return result;
-		}
+		result = new ModelAndView("investor/display");
+		result.addObject("investor", investor);
+		result.addObject("investments", investments);
 
-		// Ancillary methods
-		// --------------------------------------------------------
+		return result;
+	}
 
-		protected ModelAndView createEditModelAndView(InvestorRegisterForm investorForm) {
-			ModelAndView result;
+	// Ancillary methods
+	// --------------------------------------------------------
 
-			result = createEditModelAndView(investorForm, null);
+	protected ModelAndView createEditModelAndView(
+			InvestorRegisterForm investorForm) {
+		ModelAndView result;
 
-			return result;
-		}
+		result = createEditModelAndView(investorForm, null);
 
-		protected ModelAndView createEditModelAndView(InvestorRegisterForm investorForm,
-				String message) {
-			ModelAndView result;
+		return result;
+	}
 
-			result = new ModelAndView("investor/register");
+	protected ModelAndView createEditModelAndView(
+			InvestorRegisterForm investorForm, String message) {
+		ModelAndView result;
 
-			result.addObject("investor", investorForm);
-			result.addObject("message", message);
-			return result;
-		}
+		result = new ModelAndView("investor/register");
 
+		result.addObject("investor", investorForm);
+		result.addObject("message", message);
+		return result;
+	}
 
 }

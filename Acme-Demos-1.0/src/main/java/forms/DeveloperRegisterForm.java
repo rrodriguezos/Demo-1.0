@@ -2,7 +2,6 @@ package forms;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -21,7 +20,7 @@ public class DeveloperRegisterForm {
 	private String surname;
 	private String phone;
 	private String emailAddress;
-	
+
 	private Boolean accept;
 	private Integer id;
 
@@ -132,7 +131,5 @@ public class DeveloperRegisterForm {
 	public void setAccept(Boolean accept) {
 		this.accept = accept;
 	}
-
-	
 
 }

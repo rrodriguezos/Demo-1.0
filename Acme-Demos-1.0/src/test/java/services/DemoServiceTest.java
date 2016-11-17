@@ -220,7 +220,7 @@ public class DemoServiceTest extends AbstractTest {
 	// Edition requirement 1
 
 	@Test
-	public void editionTrip1() {
+	public void editionDemo1() {
 
 		authenticate("developer1");
 		String edit = "Acme-Canyoning ";
@@ -237,7 +237,7 @@ public class DemoServiceTest extends AbstractTest {
 	// Edition requirement 2
 
 	@Test
-	public void editionTrip2() {
+	public void editionDemo2() {
 
 		authenticate("developer1");
 
