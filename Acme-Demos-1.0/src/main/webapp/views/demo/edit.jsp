@@ -43,11 +43,10 @@
 
 		<jstl:if test="${demo.id != 0}">
 			<input type="submit" name="save"
-				value="<spring:message code="demo.save" />"
-				onclick="return confirm('<spring:message code="demo.confirm.delete.descriptions" />')" />
+				value="<spring:message code="demo.save" />" />
 			<input type="submit" name="delete"
 				value="<spring:message code="demo.delete"/>"
-				onclick="return confirm('<spring:message code="demo.confirm.delete" />')" />
+				onclick="return confirm('<spring:message code="demo.confirm.delete.descriptions" />')" />
 		</jstl:if>
 
 		<acme:cancel url="demo/developer/mylist.do" code="demo.cancel" />
