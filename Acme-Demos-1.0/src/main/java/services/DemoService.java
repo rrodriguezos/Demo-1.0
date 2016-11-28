@@ -13,6 +13,7 @@ import domain.Comment;
 import domain.Demo;
 import domain.Description;
 import domain.Developer;
+import domain.Investment;
 import domain.Resource;
 
 @Service
@@ -27,12 +28,6 @@ public class DemoService {
 	@Autowired
 	private DeveloperService developerService;
 
-	@Autowired
-	private ResourceService resourceService;
-
-	@Autowired
-	private AdministratorService administratorService;
-
 	// COnstructors -------------------------------------------------------
 	public DemoService() {
 		super();
@@ -43,6 +38,7 @@ public class DemoService {
 	public Demo create() {
 		Demo result;
 		Collection<Resource> resources;
+		Collection<Investment> investments;
 		Collection<Description> descriptions;
 		Developer developer;
 
@@ -52,6 +48,9 @@ public class DemoService {
 
 		resources = new ArrayList<Resource>();
 		result.setResources(resources);
+
+		investments = new ArrayList<Investment>();
+		result.setInvestments(investments);
 
 		descriptions = new ArrayList<Description>();
 		result.setDescriptions(descriptions);

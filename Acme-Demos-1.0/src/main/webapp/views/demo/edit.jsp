@@ -28,6 +28,7 @@
 		<form:hidden path="descriptions" />
 		<form:hidden path="comments" />
 		<form:hidden path="resources" />
+		<form:hidden path="investments" />
 
 
 		<acme:textbox code="demo.title" path="title" />

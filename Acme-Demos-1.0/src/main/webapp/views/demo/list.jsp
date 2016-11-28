@@ -45,7 +45,7 @@
 	</display:column>
 	
 	<spring:message code="demo.comments" var="commentsHeader" />
-	<display:column title="${comments}">
+	<display:column title="${commentsHeader}">
 			<input type="button" value="<spring:message code="demo.comments" />" 
 					onclick="javascript: window.location.assign('comment/list.do?demoId=${row.id}')" />
 	</display:column>

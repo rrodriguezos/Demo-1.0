@@ -104,9 +104,6 @@ public class DeveloperDemoController extends AbstractController {
 		ModelAndView result;
 
 		if (binding.hasErrors()) {
-			System.out.print(binding.hasErrors());
-			System.out.print(binding.getGlobalErrorCount());
-			System.out.print(binding.getFieldError());
 			result = createEditModelAndView(demo, binding.toString());
 		} else {
 			try {
@@ -115,13 +112,9 @@ public class DeveloperDemoController extends AbstractController {
 				result.addObject("requestUri", "/demo/developer/mylist.do");
 			} catch (Throwable oops) {
 				result = createEditModelAndView(demo, "demo.commit.error");
-				System.out.print(binding.hasErrors());
-				System.out.print(binding.getGlobalErrorCount());
-				System.out.print(binding.getFieldError());
+
 			}
-			System.out.print(binding.hasErrors());
-			System.out.print(binding.getGlobalErrorCount());
-			System.out.print(binding.getFieldError());
+
 		}
 		return result;
 	}
